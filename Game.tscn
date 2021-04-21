@@ -34,7 +34,7 @@ visible = false
 omni_range = 100.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.516981, 0, -0.855997, 0, 1, 0, 0.855997, 0, 0.516981, 45.5596, 0.243385, -8.77628 )
+transform = Transform( -0.442164, 0, -0.896934, 0, 1, 0, 0.896934, 0, -0.442164, 45.5596, 0.243385, -8.77628 )
 script = ExtResource( 2 )
 
 [node name="Pivot" type="Position3D" parent="Player"]
