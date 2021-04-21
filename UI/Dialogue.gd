@@ -13,7 +13,7 @@ func _physics_process(_delta):
 		var d = "[center]" + dialogue[dialogue_pos] + "[/center]"
 		if $Text.bbcode_text != d:
 			$Text.bbcode_text = d
-		if Input.is_action_just_pressed(("action")):
+		if Input.is_action_just_pressed("action"):
 			dialogue_pos += 1
 	elif dialogue.size():
 		emit_signal("finished_dialogue")
