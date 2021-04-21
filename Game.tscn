@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=12 format=2]
-=======
-[gd_scene load_steps=13 format=2]
->>>>>>> c4597ec70d25669c13a65217fb4afda2da0cbcb3
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -12,7 +8,6 @@
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=6]
 [ext_resource path="res://NPC/NPC.gd" type="Script" id=7]
 [ext_resource path="res://UI/Dialogue.gd" type="Script" id=8]
-[ext_resource path="res://UI/UI.gd" type="Script" id=9]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.839216, 0.0784314, 0.811765, 1 )
@@ -27,13 +22,6 @@ material = SubResource( 1 )
 radius = 0.5
 height = 1.0
 
-[sub_resource type="SphereShape" id=3]
-<<<<<<< HEAD
-radius = 6.0484
-=======
-radius = 5.66939
->>>>>>> c4597ec70d25669c13a65217fb4afda2da0cbcb3
-
 [node name="Game" type="Spatial"]
 
 [node name="OmniLight" type="OmniLight" parent="."]
@@ -42,7 +30,7 @@ visible = false
 omni_range = 100.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.442164, 0, -0.896934, 0, 1, 0, 0.896934, 0, -0.442164, 45.5596, 0.243385, 2.91016 )
+transform = Transform( -0.442164, 0, -0.896934, 0, 1, 0, 0.896934, 0, -0.442164, 45.5596, 0.243385, -8.77628 )
 script = ExtResource( 2 )
 
 [node name="Pivot" type="Position3D" parent="Player"]
@@ -81,31 +69,10 @@ transform = Transform( 0.284417, 0, -0.958701, 0, 1, 0, 0.958701, 0, 0.284417, 3
 transform = Transform( -0.726251, 0, -0.68743, 0, 1, 0, 0.68743, 0, -0.726251, -6.39128, 6.04208, -43.1094 )
 
 [node name="NPC" parent="." instance=ExtResource( 6 )]
-<<<<<<< HEAD
-transform = Transform( 0.981424, 0, 0.191854, 0, 1, 0, -0.191854, 0, 0.981424, 43.3212, 0, -15.5259 )
+transform = Transform( 0.420402, 0, -0.907338, 0, 1, 0, 0.907338, 0, 0.420402, 17.8823, 0, -15.5259 )
 script = ExtResource( 7 )
-
-[node name="Area" type="Area" parent="NPC"]
-=======
-transform = Transform( 0.420402, 0, -0.907338, 0, 1, 0, 0.907338, 0, 0.420402, 41.5684, 0, 15.0481 )
-script = ExtResource( 7 )
-
-[node name="Area" type="Area" parent="NPC"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.554123, 0 )
->>>>>>> c4597ec70d25669c13a65217fb4afda2da0cbcb3
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape" type="CollisionShape" parent="NPC/Area"]
-<<<<<<< HEAD
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0546722, 0, -0.279671 )
-=======
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.362275, 0 )
->>>>>>> c4597ec70d25669c13a65217fb4afda2da0cbcb3
-shape = SubResource( 3 )
 
 [node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource( 9 )
 
 [node name="Background" type="ColorRect" parent="UI"]
 anchor_right = 1.0
@@ -125,7 +92,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Time" type="Label" parent="UI"]
+[node name="Timer" type="Label" parent="UI"]
 margin_left = 512.0
 margin_right = 1014.0
 margin_bottom = 30.0
@@ -135,8 +102,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Timer" type="Timer" parent="UI"]
 
 [node name="Dialogue" type="Control" parent="UI"]
 anchor_right = 1.0
@@ -163,14 +128,3 @@ anchor_bottom = 1.0
 margin_top = -20.0
 margin_bottom = 10.0
 bbcode_enabled = true
-<<<<<<< HEAD
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="body_entered" from="NPC/Area" to="NPC" method="_on_Area_body_entered"]
-[connection signal="body_exited" from="NPC/Area" to="NPC" method="_on_Area_body_exited"]
-=======
-[connection signal="body_entered" from="NPC/Area" to="NPC" method="_on_Area_body_entered"]
-[connection signal="body_exited" from="NPC/Area" to="NPC" method="_on_Area_body_exited"]
-[connection signal="timeout" from="UI/Timer" to="UI" method="_on_Timer_timeout"]
->>>>>>> c4597ec70d25669c13a65217fb4afda2da0cbcb3
