@@ -6,7 +6,7 @@ var dialogue_pos = 0
 signal finished_dialogue
 
 func _ready():
-	pass
+	hide()
 	
 func _physics_process(_delta):
 	if dialogue.size() and dialogue_pos < dialogue.size():
@@ -19,12 +19,12 @@ func _physics_process(_delta):
 		emit_signal("finished_dialogue")
 		hide_dialogue()
 			
-func start_diaglogue(d):
+func start_dialogue(d):
 	dialogue = d.duplicate()
 	dialogue_pos = 0
 	show()
 	
 func hide_dialogue():
 	dialogue = []
-	dialogue = 0
+	dialogue_pos = 0
 	hide()

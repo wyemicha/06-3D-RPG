@@ -1,6 +1,6 @@
 extends KinematicBody
 
-onready var Dialouge = get_node("/root/Game/UI/Dialogue")
+onready var Dialogue = get_node("/root/Game/UI/Dialogue")
 var dialogue = [
 	"WHAT? YOU'LL NEVER TAKE ME ALI- (press E to continue)",
 	"Oh! Howdy stranger! You haven't heard of any escapin' from the county jail recently, have ya?",
@@ -13,3 +13,11 @@ var dialogue = [
 func _ready():
 	$AnimationPlayer.play("CrouchIdle")
 	
+
+
+func _on_Area_body_entered(body):
+	Dialogue.start_dialogue(dialogue)
+
+
+func _on_Area_body_exited(body):
+	Dialogue.hide_dialogue()
