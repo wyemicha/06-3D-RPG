@@ -19,6 +19,16 @@ func _ready():
 func _on_Area_body_entered(body):
 	Dialogue.start_dialogue(dialogue)
 	
+<<<<<<< HEAD
+
+
+func _on_Area_body_entered(body):
+	Dialogue.start_dialogue(dialogue)
+
+
+func _on_Area_body_exited(body):
+	Dialogue.hide_dialogue()
+=======
 func _on_Area_body_exited(body):
 	Dialogue.hide_dialogue()
 
@@ -30,3 +40,4 @@ func finished():
 
 
 
+>>>>>>> c4597ec70d25669c13a65217fb4afda2da0cbcb3
