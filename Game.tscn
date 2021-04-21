@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://NPC/NPC.tscn" type="PackedScene" id=6]
 [ext_resource path="res://NPC/NPC.gd" type="Script" id=7]
 [ext_resource path="res://UI/Dialogue.gd" type="Script" id=8]
+[ext_resource path="res://UI/UI.gd" type="Script" id=9]
+[ext_resource path="res://Drone/Drone.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.839216, 0.0784314, 0.811765, 1 )
@@ -22,6 +24,9 @@ material = SubResource( 1 )
 radius = 0.5
 height = 1.0
 
+[sub_resource type="SphereShape" id=3]
+radius = 4.66414
+
 [node name="Game" type="Spatial"]
 
 [node name="OmniLight" type="OmniLight" parent="."]
@@ -30,7 +35,9 @@ visible = false
 omni_range = 100.0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.442164, 0, -0.896934, 0, 1, 0, 0.896934, 0, -0.442164, 45.5596, 0.243385, -8.77628 )
+transform = Transform( -0.442164, 0, -0.896934, 0, 1, 0, 0.896934, 0, -0.442164, 45.5596, 0.243385, 1.12268 )
+collision_layer = 3
+collision_mask = 2147483651
 script = ExtResource( 2 )
 
 [node name="Pivot" type="Position3D" parent="Player"]
@@ -52,9 +59,10 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="lowpoly_scene" parent="." instance=ExtResource( 3 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0216408, -3.8147e-06, 0.151073 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -0.0329905, 0.0407696, 0.133083 )
 
 [node name="Target_container" type="Spatial" parent="."]
+visible = false
 
 [node name="target" parent="Target_container" instance=ExtResource( 4 )]
 transform = Transform( 0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, 0.939693, -78.9967, 25.3773, -64.1025 )
@@ -68,16 +76,37 @@ transform = Transform( 0.284417, 0, -0.958701, 0, 1, 0, 0.958701, 0, 0.284417, 3
 [node name="target4" parent="Target_container" instance=ExtResource( 4 )]
 transform = Transform( -0.726251, 0, -0.68743, 0, 1, 0, 0.68743, 0, -0.726251, -6.39128, 6.04208, -43.1094 )
 
+[node name="Drone_container" type="Spatial" parent="."]
+
+[node name="Drone" parent="Drone_container" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 100 )
+
 [node name="NPC" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.420402, 0, -0.907338, 0, 1, 0, 0.907338, 0, 0.420402, 17.8823, 0, -15.5259 )
+transform = Transform( 0.200188, 0, -0.979757, 0, 1, 0, 0.979757, 0, 0.200188, 18.3595, 0, -15.5259 )
 script = ExtResource( 7 )
 
+[node name="Area" type="Area" parent="NPC"]
+collision_layer = 2147483650
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="NPC/Area"]
+shape = SubResource( 3 )
+
 [node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 9 )
 
 [node name="Background" type="ColorRect" parent="UI"]
 anchor_right = 1.0
 margin_bottom = 30.0
 color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Damage" type="ColorRect" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 0, 0, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -92,7 +121,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Label" parent="UI"]
+[node name="Time" type="Label" parent="UI"]
 margin_left = 512.0
 margin_right = 1014.0
 margin_bottom = 30.0
@@ -102,6 +131,8 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timer" type="Timer" parent="UI"]
 
 [node name="Dialogue" type="Control" parent="UI"]
 anchor_right = 1.0
@@ -128,3 +159,6 @@ anchor_bottom = 1.0
 margin_top = -20.0
 margin_bottom = 10.0
 bbcode_enabled = true
+[connection signal="body_entered" from="NPC/Area" to="NPC" method="_on_Area_body_entered"]
+[connection signal="body_exited" from="NPC/Area" to="NPC" method="_on_Area_body_exited"]
+[connection signal="timeout" from="UI/Timer" to="UI" method="_on_Timer_timeout"]
