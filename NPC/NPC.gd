@@ -7,8 +7,9 @@ var dialogue = [
 	"No? Good. I reckon it'll be years before they notice.",
 	"Say, you've got a mighty fine weapon there partner! Maybe if you're a good shot, you could roll with us for a while.",
 	"...",
-	"Hmm, quite the silent type. Tell ya what, if you can hit all four of them there targets before I finish pitchin' this tent, you've got yourself a posse",
-	"Now, it won't be that easy! You'll have to deal with my partner 'n crime, ol' Jimbo, and let me tell ya, he's a doozy!"
+	"Hmm, quite the silent type. Tell ya what, if you can hit all four of them there targets and destroy my new toy before", 
+	"I finish pitchin' this tent, you've got yourself a posse!",
+	"Now, it won't be that easy! I just happened to come by this here flying machine, and let me tell ya, it's a doozy!"
 ]
 func _ready():
 	$AnimationPlayer.play("CrouchIdle")

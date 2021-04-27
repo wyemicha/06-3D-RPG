@@ -78,7 +78,9 @@ transform = Transform( -0.726251, 0, -0.68743, 0, 1, 0, 0.68743, 0, -0.726251, -
 
 [node name="Drone_container" type="Spatial" parent="."]
 
-[node name="Drone" parent="Drone_container" instance=ExtResource( 10 )]
+[node name="Drone" parent="Drone_container" groups=[
+"target",
+] instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 100 )
 
 [node name="NPC" parent="." instance=ExtResource( 6 )]
