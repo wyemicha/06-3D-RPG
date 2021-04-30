@@ -36,6 +36,13 @@ func _physics_process(_delta):
 		$AnimationPlayer.play("Shoot")
 		if target != null and target.is_in_group("target"):
 			target.die()
+	if Global.timer < 0:
+		get_tree().change_scene("res://UI/Game_Over.tscn")
+			
+	if global_transform.origin.y < -15:
+		get_tree().change_scene("res://UI/Game_Over.tscn")
+	if get_node("/root/Game/Target_container").get_child_count() == 0 and get_node("/root/Game/Drone_container").get_child_count()==0:
+		get_tree().change_scene("res://UI/win.tscn")
 		
 	
 func _input(event):

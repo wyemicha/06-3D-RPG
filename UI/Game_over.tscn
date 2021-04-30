@@ -27,6 +27,9 @@ margin_bottom = 13.1322
 text = "You died!"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Play" type="Button" parent="."]
 margin_left = 462.0
