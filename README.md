@@ -1,8 +1,16 @@
-# 3D-Character
+# Project 6-MSCH-C220
+Project 6 for MSCH-C220, 1 May 2021
 
-An animated 3D character that can be used in the 3D-RPG project.
-
-Based on the [Kenney Character Assets](https://kenney.itch.io/kenney-character-assets) provided by kenney.nl. The model and animations were compiled in Blender and then imported into Godot.
 
 ## Implementation
-Created in Blender 2.9 and Godot 3.2
+Built using Godot 3.2.3
+
+
+## References
+Jason Francis
+
+## Future Development
+None
+
+## Created by 
+Wyeth Michaelsen
